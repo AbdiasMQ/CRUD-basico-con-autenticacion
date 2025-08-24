@@ -10,18 +10,19 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Lista de personas</a>
+          <a class="nav-link" href="{% url 'persona:persona_lista' %}">Lista de personas</a>
         </li>
          <li class="nav-item">
           <a class="nav-link" href="#">Lista de oficinas</a>
          </li>  
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+      <form class="d-flex" role="search" action="{% url 'persona:persona_buscar' %}">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q"/>
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-      <button class="btn btn-outline-primary ms-2" type="button">Ingresar</button>
-      <button class="btn btn-outline-danger ms-2" type="button">Salir</button>
+      <a class="btn btn-outline-primary ms-2" href="{% url 'accounts:login' %}">Ingresar</a>
+      <a class="btn btn-outline-danger ms-2" href="{% url 'accounts:logout' %}">Salir</a>
+
     </div>
   </div>
 </nav>

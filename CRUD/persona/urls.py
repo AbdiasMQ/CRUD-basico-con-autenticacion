@@ -1,10 +1,13 @@
 from django.urls import path, include
 from . import views
-
-app_name = 'persona'
 from django.urls import path
-from . import views
+app_name = 'persona'
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('lista/', views.PersonaListView.as_view(), name='persona_lista'),
+    path('buscar/', views.PersonaSearchView.as_view(), name='persona_buscar'),
+    path('crear/', views.PersonaCreateView.as_view(), name='persona_crear'),
+    path('editar/<int:pk>/', views.PersonaUpdateView.as_view(), name='persona_editar'),
+    path('eliminar/<int:pk>/', views.PersonaDeleteView.as_view(), name='persona_eliminar'),
+    path('detalle/<int:pk>/', views.PersonaDetailView.as_view(), name='persona_detalle'),
 ]

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Buscar Persona</h1>
+  <form method="GET" action="{% url 'persona:persona_buscar' %}">
+    <input type="text" name="q" placeholder="Buscar persona" />
+    <button type="submit">Buscar</button>
+  </form>
+
+  {% if persona %}
+    <ul>
+      {% for p in persona %}
+      <li>Nombre: {{ p.nombre }} - Apellido: {{ p.apellido }} - Edad: {{ p.edad }} años</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

@@ -19,7 +19,7 @@ class SignUpView(CreateView):
         return context
 
 class LogoutMessageView(TemplateView):
-    template_name = 'accounts/logout_message.html'
+    template_name = 'accounts/logout.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -27,7 +27,7 @@ class LogoutMessageView(TemplateView):
         return context
 
 class LoginView(auth_views.LoginView):
-    template_name = 'registration/login.html'
+    template_name = 'accounts/login.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

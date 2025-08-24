@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if persona %}
+        <h1>Lista de Personas</h1>
+        <ul>
+            {% for p in persona %}
+                <li>
+                    <a href="{% url 'persona:persona_detalle' p.pk %}">
+                        {{ p.nombre }} {{ p.apellido }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay personas registradas.</p>
+    {% endif %}
+{% endblock content %}
