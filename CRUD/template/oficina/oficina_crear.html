@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Crear Nueva Oficina</h1>
+  <form action="{% url 'oficina:oficina_crear' %}" method="post">
+    {% csrf_token %}
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+    <label for="nombre_corto">Nombre Corto:</label>
+    <input type="text" id="nombre_corto" name="nombre_corto" required>
+    <button type="submit">Crear</button>
+  </form>
+  <a href="{% url 'oficina:oficina_lista' %}">Volver a la lista</a>
+{% endblock %}
