@@ -3,15 +3,21 @@
 {% block content %}
     {% if persona %}
         <h1>Lista de Personas</h1>
-        <ul>
-            {% for p in persona %}
-                <li>
-                    <a href="{% url 'persona:persona_detalle' p.pk %}">
-                        {{ p.nombre }} {{ p.apellido }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
+        <table>
+            <tbody>
+                {% for p in persona %}
+                    <tr>
+                        <H2></H2>
+                        <td>{{ p.nombre }}</td>
+                        <td>{{ p.apellido }}</td>
+                        <td>
+                            <a href="{% url 'persona:persona_detalle' p.pk %}" class="btn btn-info">Ver</a>
+                            <a href="{% url 'persona:persona_editar' p.pk %}" class="btn btn-primary">Editar</a>
+                            <a href="{% url 'persona:persona_eliminar' p.pk %}" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+        </tbody>
     {% else %}
         <p>No hay personas registradas.</p>
     {% endif %}
