@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Agrega estas líneas al .gitignore
+*.tmp
+*.log
+node_modules/
+.DS_Store
+
 # Virtual environments
 .env
 .venv

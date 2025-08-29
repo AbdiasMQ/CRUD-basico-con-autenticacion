@@ -8,12 +8,12 @@ from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
-class oficinaListView(LoginRequiredMixin, ListView):
+class oficinaListView(ListView):
     model = oficina
     template_name = 'oficina/oficina_lista.html'
     context_object_name = 'oficinas'
 
-class oficinaDetailView(LoginRequiredMixin, DetailView):
+class oficinaDetailView(DetailView):
     model = oficina
     template_name = 'oficina/oficina_detalle.html'
     context_object_name = 'oficina'
@@ -35,7 +35,7 @@ class oficinaDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'oficina/oficina_eliminar.html'
     success_url = reverse_lazy('oficina:oficina_lista')
 
-class oficinaSearchView(LoginRequiredMixin, ListView):
+class oficinaSearchView(ListView):
     model = oficina
     template_name = 'oficina/oficina_buscar.html'
     context_object_name = 'oficinas'

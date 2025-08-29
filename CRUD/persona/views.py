@@ -30,7 +30,7 @@ class PersonaDetailView(DetailView):
     
 
 #persona editar
-class PersonaUpdateView(UpdateView):
+class PersonaUpdateView(LoginRequiredMixin, UpdateView):
     model = Persona
     template_name = "persona/persona_editar.html"
     context_object_name = "persona"
@@ -38,7 +38,7 @@ class PersonaUpdateView(UpdateView):
     success_url = reverse_lazy("persona:persona_lista")
 
 #persona eliminar
-class PersonaDeleteView(DeleteView):
+class PersonaDeleteView(LoginRequiredMixin, DeleteView):
     model = Persona
     template_name = "persona/persona_eliminar.html"
     context_object_name = "persona"
@@ -65,7 +65,7 @@ class PersonaSearchView(LoginRequiredMixin, ListView):
         return context
 
 #persona crear
-class PersonaCreateView(CreateView):
+class PersonaCreateView(LoginRequiredMixin, CreateView):
     model = Persona
     template_name = "persona/persona_crear.html"
     context_object_name = "persona"

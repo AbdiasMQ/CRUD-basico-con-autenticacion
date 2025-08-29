@@ -57,7 +57,7 @@ ROOT_URLCONF = 'CRUD.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["template"],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,6 +124,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_REDIRECT_URL = 'persona:lista'
 
+# Logout redirect URL
+LOGOUT_REDIRECT_URL = 'persona:lista'
 
-LOGIN_REDIRECT_URL = ''#persona lista
+# login redirect URL 
+LOGIN_REDIRECT_URL = 'oficina:lista'
+
+# Logout redirect URL
+LOGOUT_REDIRECT_URL = 'oficina:lista'
+

@@ -28,7 +28,6 @@ class LogoutMessageView(TemplateView):
 
 class LoginView(auth_views.LoginView):
     template_name = 'accounts/login.html'
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Iniciar sesión'

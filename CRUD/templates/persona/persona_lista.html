@@ -20,5 +20,6 @@
         </tbody>
     {% else %}
         <p>No hay personas registradas.</p>
+    {% include 'paginator.html' %}
     {% endif %}
 {% endblock content %}

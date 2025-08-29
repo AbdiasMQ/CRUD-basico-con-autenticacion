@@ -1,14 +1,11 @@
-from django.urls import path, include
-#urls for auth views
-from django.contrib.auth import views as auth_views
+from django.urls import path
 from . import views
-from .views import SignUpView, LogoutMessageView, LoginView
 
-app_name = "accounts"
+app_name = 'accounts'
 
 urlpatterns = [
-    path("login/", LoginView.as_view(), name="login"),  
-    path("logout/", LogoutMessageView.as_view(), name="logout"),
-    path("signup/", SignUpView.as_view(), name="signup"),
+    path('login/', views.LoginView.as_view(), name='login'),   # <- aquí
+    path('logout/', views.LogoutMessageView.as_view(), name='logout'),  # <- si quieres tu template de logout
+    path('signup/', views.SignUpView.as_view(), name='signup'),
 ]
 
