@@ -1,28 +1,71 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary"data-bs-theme='dark'>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">CRUD</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#">Hola esto es django</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if user.is_authenticated %}
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            {{ user.username }}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{% url 'accounts_logout' %}">cerrar sesión</a>
+          </div>
+        </div>
+
+        {% else %} 
+        <a class="nav-link" href="{% url 'accounts_login' %}">Iniciar sesión</a>
+        {% endif %}
+        
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" href="{% url 'persona:persona_lista' %}"
+            >Lista de personas</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'persona:persona_lista' %}">Lista de personas</a>
+          <a class="nav-link" href="{% url 'oficina:oficina_lista' %}"
+            >Lista de oficinas</a
+          >
         </li>
-         <li class="nav-item">
-          <a class="nav-link" href="{% url 'oficina:oficina_lista' %}">Lista de oficinas</a>
-         </li>  
       </ul>
-      <form class="d-flex" role="search" action="{% url 'persona:persona_buscar' %}">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q"/>
+      <form
+        class="d-flex"
+        role="search"
+        action="{% url 'persona:persona_buscar' %}"
+      >
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          name="q"
+        />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-      <a class="btn btn-outline-primary ms-2" href="{% url 'accounts:login' %}">Ingresar</a>
-      <a class="btn btn-outline-danger ms-2" href="{% url 'accounts:logout' %}">Salir</a>
-
+      <a class="btn btn-outline-primary ms-2" href="{% url 'accounts:login' %}"
+        >Ingresar</a
+      >
+      <a class="btn btn-outline-danger ms-2" href="{% url 'accounts:logout' %}"
+        >Salir</a
+      >
     </div>
   </div>
 </nav>

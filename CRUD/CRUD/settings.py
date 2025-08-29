@@ -31,15 +31,23 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django-extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
     'persona',
     'oficina',
+    'accounts',
+    'bootstrap4',
+    'crispy_forms',
+    'crispy_bootstrap4',
+    'captcha',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
 ]
 
 MIDDLEWARE = [
@@ -50,9 +58,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
-ROOT_URLCONF = 'crud.urls'
+ROOT_URLCONF = 'CRUD.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'CRUD.wsgi.application'
+WSGI_APPLICATION = 'crud.wsgi.application'
 
 
 # Database
@@ -124,6 +133,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Login redirect URL
 LOGIN_REDIRECT_URL = 'persona:lista'
 
 # Logout redirect URL
@@ -135,3 +145,11 @@ LOGIN_REDIRECT_URL = 'oficina:lista'
 # Logout redirect URL
 LOGOUT_REDIRECT_URL = 'oficina:lista'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+SITE_ID = 1
+
+ACCOUNT_FORMS = {
+    'signup':'accounts.forms.CustomSignupForm',
+}
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'

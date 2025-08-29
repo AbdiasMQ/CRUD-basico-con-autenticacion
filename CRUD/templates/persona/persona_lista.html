@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
-
 {% block content %}
+    <h1>Lista de Personas</h1>
     {% if persona %}
-        <h1>Lista de Personas</h1>
         <table>
             <tbody>
                 {% for p in persona %}
@@ -20,6 +19,7 @@
         </tbody>
     {% else %}
         <p>No hay personas registradas.</p>
+        <a href="{% url 'persona:persona_crear' %}" class="btn btn-success">Agregar Persona</a>
     {% include 'paginator.html' %}
     {% endif %}
 {% endblock content %}
