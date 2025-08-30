@@ -1,28 +1,36 @@
 {% extends 'base.html' %}
-
 {% block content %}
-  <h1>Lista de Oficinas</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Nombre Corto</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for oficina in oficinas %}
-        <tr>
-          <td>{{ oficina.nombre }}</td>
-          <td>{{ oficina.nombre_corto }}</td>
-          <td>
-            <a href="{% url 'oficina:oficina_detalle' oficina.id %}" class="btn btn-info">Ver</a>
-            <a href="{% url 'oficina:oficina_editar' oficina.id %}" class="btn btn-primary">Editar</a>
-            <a href="{% url 'oficina:oficina_eliminar' oficina.id %}" class="btn btn-danger">Eliminar</a>
-          </td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  <a href="{% url 'oficina:oficina_crear' %}">Crear nueva oficina</a>
-   {% include 'paginator.html' %}
-{% endblock %}
+    <h1>Lista de oficinas</h1>
+    {% if oficinas %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                   <th>Nombre</th>
+                   <th>Nombre Corto</th>
+                   <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for o in oficinas %}
+                    <tr>
+                        <td>{{ o.nombre }}</td>
+                        <td>{{ o.nombre_corto }}</td>
+                        <td>
+                             <a href="{% url 'oficina:oficina_detalle' o.pk %}" class="btn btn-info">Ver</a>
+                             <a href="{% url 'oficina:oficina_editar' o.pk %}" class="btn btn-primary">Modificar</a>
+                             <a href="{% url 'oficina:oficina_eliminar' o.pk %}" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay oficinas registradas.</p> 
+    {% endif %}
+    <div class="mt-3">
+        <a href="{% url 'oficina:oficina_crear' %}" class="btn btn-success">Agregar nueva oficina</a>
+    </div>
+    <div class="mt-3">
+        {% include 'paginator.html' %}
+    </div>
+{% endblock content %}

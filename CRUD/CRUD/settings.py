@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django-extensions',
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -61,7 +61,7 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
-ROOT_URLCONF = 'CRUD.urls'
+ROOT_URLCONF = 'crud.urls'
 
 TEMPLATES = [
     {
@@ -133,19 +133,17 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Login redirect URL
-LOGIN_REDIRECT_URL = 'persona:lista'
 
-# Logout redirect URL
-LOGOUT_REDIRECT_URL = 'persona:lista'
+from django.urls import reverse_lazy
 
-# login redirect URL 
-LOGIN_REDIRECT_URL = 'oficina:lista'
+# Login redirect URL: después de iniciar sesión, va a la lista de personas
+LOGIN_REDIRECT_URL = reverse_lazy('persona:persona_lista')
 
-# Logout redirect URL
-LOGOUT_REDIRECT_URL = 'oficina:lista'
+# Logout redirect URL: después de cerrar sesión, va al login
+LOGOUT_REDIRECT_URL = reverse_lazy('account_login')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 SITE_ID = 1
 
 ACCOUNT_FORMS = {

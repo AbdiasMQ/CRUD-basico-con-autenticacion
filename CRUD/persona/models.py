@@ -1,5 +1,5 @@
 from django.db import models
-from oficina.models import oficina as Oficina
+from oficina.models import Oficina
 
 class Persona(models.Model):
     nombre = models.CharField(verbose_name="Nombre", max_length=100)
@@ -7,7 +7,7 @@ class Persona(models.Model):
     edad = models.IntegerField(verbose_name="Edad")
     oficina = models.ForeignKey(Oficina,
                                 on_delete=models.CASCADE,
-                                related_name='personas',
+                                related_name='persona',
                                 null=True, 
                                 blank=True)
 

@@ -7,5 +7,5 @@
     {% csrf_token %}
     <button type="submit">Eliminar</button>
   </form>
-  <a href="{% url 'oficina:oficina_lista' %}">Volver a la lista</a>
+  <a href="{% url 'oficina:oficina_lista' %}" class="btn btn-secondary">Volver a la lista</a>
 {% endblock %}

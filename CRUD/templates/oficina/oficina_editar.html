@@ -10,5 +10,5 @@
     <input type="text" id="nombre_corto" name="nombre_corto" value="{{ oficina.nombre_corto }}" required>
     <button type="submit">Guardar</button>
   </form>
-  <a href="{% url 'oficina:oficina_lista' %}">Volver a la lista</a>
+  <a href="{% url 'oficina:oficina_lista' %}" class="btn btn-secondary">Volver a la lista</a>
 {% endblock %}

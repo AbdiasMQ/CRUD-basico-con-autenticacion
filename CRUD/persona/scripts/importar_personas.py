@@ -24,10 +24,10 @@ def run(*args):
                 edad = row['edad']
                 oficina_nombre_corto = row['oficina_nombre_corto']
                 if not nombre or not apellido or not edad:
-                    print(f"Error en la fila {row}. Falta el nombre o el apellido o la edad")
+                    print(f"Error en la fila {row}: Falta el nombre o el apellido o la edad")
                     continue
                 try:
-                    edad = int(edad)
+                     edad = int(edad.strip())
                 except (ValueError, TypeError) as e:
                     print(f"Error de validación en la fila {row}. la edad no es un numero valido")
                     continue
@@ -37,7 +37,7 @@ def run(*args):
                     if not oficina_obj:
                         print(f"Warning: No existe la oficina mensionada")
                         print(f"Se creará el registro sin oficina")
-                        continue
+                        oficina_obj = None
                 try:
                     persona = Persona(nombre=nombre, apellido=apellido, edad=edad, oficina=oficina_obj)
                     persona.full_clean()  # Validar el modelo
@@ -48,8 +48,9 @@ def run(*args):
                     print(f"Error en la fila {row}. Detalle: {e}")
 
             with transaction.atomic():
-                Persona.objects.bulk_create(personas_a_crear)
-                print(f"Se importaron {len(personas_a_crear)} registros.")
+                  for persona in personas_a_crear:
+                    persona.save()
+            print(f"Se importaron {len(personas_a_crear)} registros.")
     except FileNotFoundError:
         print(f"Error. No se encontro el archivo: {csv_file}")
     except Exception as e:

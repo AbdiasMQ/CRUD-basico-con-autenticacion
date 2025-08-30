@@ -2,24 +2,37 @@
 {% block content %}
     <h1>Lista de Personas</h1>
     {% if persona %}
-        <table>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
             <tbody>
                 {% for p in persona %}
                     <tr>
-                        <H2></H2>
                         <td>{{ p.nombre }}</td>
                         <td>{{ p.apellido }}</td>
+                        <td>{{ p.edad }}</td>
                         <td>
                             <a href="{% url 'persona:persona_detalle' p.pk %}" class="btn btn-info">Ver</a>
-                            <a href="{% url 'persona:persona_editar' p.pk %}" class="btn btn-primary">Editar</a>
+                            <a href="{% url 'persona:persona_editar' p.pk %}" class="btn btn-primary">Modificar</a>
                             <a href="{% url 'persona:persona_eliminar' p.pk %}" class="btn btn-danger">Eliminar</a>
                         </td>
                     </tr>
                 {% endfor %}
-        </tbody>
+            </tbody>
+        </table>
     {% else %}
-        <p>No hay personas registradas.</p>
-        <a href="{% url 'persona:persona_crear' %}" class="btn btn-success">Agregar Persona</a>
-    {% include 'paginator.html' %}
+        <p>No hay personas registradas.</p> 
     {% endif %}
+    <div class="mt-3">
+        <a href="{% url 'persona:persona_crear' %}" class="btn btn-success">Agregar nueva persona</a>
+    </div>
+    <div class="mt-3">
+        {% include 'paginator.html' %}
+    </div>
 {% endblock content %}

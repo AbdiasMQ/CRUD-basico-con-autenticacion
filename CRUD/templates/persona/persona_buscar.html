@@ -13,5 +13,7 @@
       <li>Nombre: {{ p.nombre }} - Apellido: {{ p.apellido }} - Edad: {{ p.edad }} años</li>
       {% endfor %}
     </ul>
+  {% else %}
+    <p>No se encontraron resultados.</p>
   {% endif %}
 {% endblock %}

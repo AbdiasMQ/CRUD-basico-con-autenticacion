@@ -23,7 +23,7 @@ class PersonaListView(ListView):
         return super().paginate_queryset(queryset, page_size)
 
 #persona detalle
-class PersonaDetailView(DetailView):
+class PersonaDetailView(LoginRequiredMixin, DetailView):
     model = Persona
     template_name = "persona/persona_detalle.html"
     context_object_name = "persona"
@@ -71,3 +71,4 @@ class PersonaCreateView(LoginRequiredMixin, CreateView):
     context_object_name = "persona"
     fields = ["nombre", "apellido", "edad", "oficina"]
     success_url = reverse_lazy("persona:persona_lista")
+
