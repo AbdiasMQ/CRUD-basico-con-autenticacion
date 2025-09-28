@@ -16,7 +16,7 @@ services:
     ports:
       - '8000:8000' #puerto 800 de nuestra pc y 8000 siguiente del container
     volumes:
-      - ./crud:/crud #mapeamos la carpeta local de nuestro proyecto con la carpeta /crud dentro del conainer para poder hacer cambios y que lo mismo se reflejen en tiempo real 
+      - ./crud:/CRUD #mapeamos la carpeta local de nuestro proyecto con la carpeta /crud dentro del conainer para poder hacer cambios y que lo mismo se reflejen en tiempo real 
     env_file: # carga las variables de entorno definidas en el archivo .env
               # (usuario de la BD, contraseña, nombre de la BD, host, puerto, etc.)
       - .env
